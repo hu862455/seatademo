@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: storage-service
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+    instanceId: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://portal-dev:portal-dev@10.17.162.120:8761/eureka/
