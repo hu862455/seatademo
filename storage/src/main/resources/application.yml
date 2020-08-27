@@ -22,3 +22,7 @@ seata:
     # 分组和 Seata 服务的映射
     grouplist:
       default: 192.168.99.100:8091
+
+#logging:
+#  level:
+#    root: debug

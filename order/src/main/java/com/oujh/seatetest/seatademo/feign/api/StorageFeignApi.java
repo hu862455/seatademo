@@ -1,11 +1,8 @@
 package com.oujh.seatetest.seatademo.feign.api;
 
 import com.oujh.seatetest.seatademo.feign.dto.StorageDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
 
 /**
  * @Auther oujh5

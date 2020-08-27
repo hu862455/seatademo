@@ -3,7 +3,6 @@ package com.oujh.seatetest.seatademo.controller;
 import com.oujh.seatetest.seatademo.entity.Order;
 import com.oujh.seatetest.seatademo.feign.api.AccountFeignApi;
 import com.oujh.seatetest.seatademo.feign.api.StorageFeignApi;
-import com.oujh.seatetest.seatademo.feign.dto.StorageDto;
 import com.oujh.seatetest.seatademo.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +20,10 @@ public class OrderController {
 
     @Autowired
     private OrderRepository orderRepository;
-    @Autowired
-    private StorageFeignApi storageFeignApi;
-    @Autowired
-    private AccountFeignApi accountFeignApi;
+//    @Autowired
+//    private StorageFeignApi storageFeignApi;
+//    @Autowired
+//    private AccountFeignApi accountFeignApi;
 
     @GetMapping("/{id}")
     public Order getOrder(@PathVariable("id") Integer id){
@@ -47,9 +46,9 @@ public class OrderController {
         order.setPrice(50);
         orderRepository.save(order);
         //模拟扣减库存
-        storageFeignApi.reduceStorage(storageId);
-        //模拟扣减余额
-        accountFeignApi.reduceBalance(accountId, 10.5);
+//        storageFeignApi.reduceStorage(storageId);
+//        //模拟扣减余额
+//        accountFeignApi.reduceBalance(accountId, 10.5);
         return order;
     }
 
