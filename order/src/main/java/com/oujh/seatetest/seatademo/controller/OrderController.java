@@ -4,6 +4,7 @@ import com.oujh.seatetest.seatademo.entity.Order;
 import com.oujh.seatetest.seatademo.feign.api.AccountFeignApi;
 import com.oujh.seatetest.seatademo.feign.api.StorageFeignApi;
 import com.oujh.seatetest.seatademo.mapper.OrderMapper;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,7 @@ public class OrderController {
      * @return
      */
     @GetMapping("/save")
+    @GlobalTransactional(name="create-order", rollbackFor = Exception.class)    //开启全局事务
     public Order saveOrder(@RequestParam("storageId") Integer storageId, @RequestParam("accountId") Integer accountId){
         Order order = new Order();
         order.setCreateTime(new Date());
