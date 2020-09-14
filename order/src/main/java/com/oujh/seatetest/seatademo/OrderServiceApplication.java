@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication()
+@SpringBootApplication
 @EnableFeignClients(basePackages = {"com.oujh.seatetest.seatademo.feign.api"})
 @MapperScan("com.oujh.seatetest.seatademo.mapper")
 public class OrderServiceApplication {
