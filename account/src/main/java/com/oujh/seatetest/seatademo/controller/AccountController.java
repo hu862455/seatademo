@@ -1,11 +1,10 @@
 package com.oujh.seatetest.seatademo.controller;
 
 import com.oujh.seatetest.seatademo.entity.Account;
-import com.oujh.seatetest.seatademo.repository.AccountRepository;
+import com.oujh.seatetest.seatademo.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.Date;
 
 /**
@@ -17,17 +16,16 @@ import java.util.Date;
 public class AccountController {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountMapper accountMapper;
 
     @GetMapping("/reduceBalance")
-    @Transactional
     public Account reduceBalance(@RequestParam("accountId") Integer accountId,
                                  @RequestParam("price") Double price){
-        Account account = accountRepository.findById(accountId).get();
+        Account account = accountMapper.selectById(accountId);
         if(account.getBalance() > price) {
             account.setBalance(account.getBalance() - price);
             account.setUpdateTime(new Date());
-            accountRepository.save(account);
+            accountMapper.updateById(account);
         }else{
             throw new RuntimeException("余额不足");
         }

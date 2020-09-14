@@ -1,20 +1,16 @@
 package com.oujh.seatetest.seatademo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.Date;
 
 /**
  * @Auther oujh5
  * @Date 2020-8-20
  */
-@Entity(name="t_account")
+@TableName("t_account")
 public class Account {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String userName;
     private double balance;        //余额

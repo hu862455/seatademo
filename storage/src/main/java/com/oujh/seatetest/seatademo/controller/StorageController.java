@@ -1,12 +1,9 @@
 package com.oujh.seatetest.seatademo.controller;
 
 import com.oujh.seatetest.seatademo.entity.Storage;
-import com.oujh.seatetest.seatademo.repository.StorageRepository;
+import com.oujh.seatetest.seatademo.mapper.StorageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.transaction.Transactional;
-import java.util.Date;
 
 /**
  * @Auther oujh5
@@ -17,15 +14,14 @@ import java.util.Date;
 public class StorageController {
 
     @Autowired
-    private StorageRepository storageRepository;
+    private StorageMapper storageMapper;
 
     @GetMapping("/reduce")
-    @Transactional
     public Storage reduceStorage(@RequestParam("storageId") Integer storageId){
-        Storage storage = storageRepository.findById(storageId).get();
+        Storage storage = storageMapper.selectById(storageId);
         if(storage.getNum() > 0) {
             storage.setNum(storage.getNum() - 1);
-            storageRepository.save(storage);
+            storageMapper.updateById(storage);
         }else{
             throw new RuntimeException("库存不足");
         }

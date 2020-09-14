@@ -11,6 +11,11 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    alibaba:
+      seata:
+        # Seata 事务组名称，对应file.conf文件中 vgroup_mapping.sca-customer-seata-tx-service-group
+        tx-service-group: order-service-group
 
 # Seata 配置项，对应 SeataProperties 类
 seata:
@@ -25,6 +30,6 @@ seata:
     grouplist:
       default: 192.168.99.100:8091
 
-logging:
-  level:
-    root: debug
+#logging:
+#  level:
+#    root: debug
