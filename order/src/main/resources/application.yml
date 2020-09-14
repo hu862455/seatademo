@@ -1,11 +1,6 @@
 server:
   port: 8080
 spring:
-  jpa:
-    open-in-view: false
-    show-sql: true
-    hibernate:
-      ddl-auto: update
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/seata_test_order?useUnicode=true&characterEncoding=utf-8
     username: root
@@ -14,22 +9,10 @@ spring:
   cloud:
     alibaba:
       seata:
-        # Seata 事务组名称，对应file.conf文件中 vgroup_mapping.sca-customer-seata-tx-service-group
+        # Seata 事务组名称，对应file.conf文件中 vgroup_mapping.order-service-group
         tx-service-group: order-service-group
 
-# Seata 配置项，对应 SeataProperties 类
-seata:
-  application-id: ${spring.application.name} # Seata 应用编号，默认为 ${spring.application.name}
-  tx-service-group: ${spring.application.name}-group # Seata 事务组编号，用于 TC 集群名
-  # 服务配置项，对应 ServiceProperties 类
-  service:
-    # 虚拟组和分组的映射
-    vgroup-mapping:
-      order-service-group: default
-    # 分组和 Seata 服务的映射
-    grouplist:
-      default: 192.168.99.100:8091
-
-#logging:
-#  level:
+logging:
+  level:
 #    root: debug
+    com.oujh.seatetest.seatademo.mapper: debug    # 日志打印sql
