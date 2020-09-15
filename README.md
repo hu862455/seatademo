@@ -1,5 +1,5 @@
 ### seatademo
-spring cloud+mybatis+seata 测试项目
+spring cloud+mybatis+feign+seata 测试项目
 ### 项目结构
 - order：订单服务
 - account：账户服务
