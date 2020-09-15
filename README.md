@@ -7,7 +7,7 @@ spring cloud+mybatis+feign+seata 测试项目
 ## 项目入口
 OrderController.saveOrder()为测试入口，模拟创建订单，保存订单后，调用feign接口模拟扣减余额和扣减库存
 
-## 集成步骤
+## spring-cloud集成seata笔记
 ### 1、 初始化表结构
 ```sql
 -- 注意此处0.7.0+ 增加字段 context
