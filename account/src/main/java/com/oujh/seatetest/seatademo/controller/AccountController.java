@@ -1,5 +1,7 @@
 package com.oujh.seatetest.seatademo.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.oujh.seatetest.seatademo.entity.Account;
 import com.oujh.seatetest.seatademo.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,14 @@ public class AccountController {
             throw new RuntimeException("余额不足");
         }
         return account;
+    }
+
+    @GetMapping()
+    public IPage<Account> getOrders(@RequestParam("currPage") int currPage, @RequestParam("pageSize") int pageSize){
+        IPage<Account> page = new Page<Account>();
+        page.setCurrent(currPage);
+        page.setSize(pageSize);
+        return accountMapper.selectPage(page, null);
     }
 
 }

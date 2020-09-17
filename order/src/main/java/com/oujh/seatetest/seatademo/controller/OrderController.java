@@ -1,5 +1,7 @@
 package com.oujh.seatetest.seatademo.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.oujh.seatetest.seatademo.entity.Order;
 import com.oujh.seatetest.seatademo.feign.api.AccountFeignApi;
 import com.oujh.seatetest.seatademo.feign.api.StorageFeignApi;
@@ -28,6 +30,14 @@ public class OrderController {
     @GetMapping("/{id}")
     public Order getOrder(@PathVariable("id") Integer id){
         return orderMapper.selectById(id);
+    }
+
+    @GetMapping()
+    public IPage<Order> getOrders(@RequestParam("currPage") int currPage, @RequestParam("pageSize") int pageSize){
+        IPage<Order> page = new Page<Order>();
+        page.setCurrent(currPage);
+        page.setSize(pageSize);
+        return orderMapper.selectPage(page, null);
     }
 
     /**

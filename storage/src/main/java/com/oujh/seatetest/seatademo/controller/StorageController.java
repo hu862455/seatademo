@@ -1,5 +1,7 @@
 package com.oujh.seatetest.seatademo.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.oujh.seatetest.seatademo.entity.Storage;
 import com.oujh.seatetest.seatademo.mapper.StorageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,14 @@ public class StorageController {
             throw new RuntimeException("库存不足");
         }
         return storage;
+    }
+
+    @GetMapping()
+    public IPage<Storage> getOrders(@RequestParam("currPage") int currPage, @RequestParam("pageSize") int pageSize){
+        IPage<Storage> page = new Page<Storage>();
+        page.setCurrent(currPage);
+        page.setSize(pageSize);
+        return storageMapper.selectPage(page, null);
     }
 
 }
