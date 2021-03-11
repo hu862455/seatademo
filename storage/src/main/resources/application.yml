@@ -5,7 +5,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://rm-bp1c7o760p1eyn0cz.mysql.rds.aliyuncs.com:3306/seata_test_storage?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://rm-bp1c7o760p1eyn0czfo.mysql.rds.aliyuncs.com:3306/seata_test_storage?useUnicode=true&characterEncoding=utf-8
     username: hushuai
     password: Hs19910521
     driver-class-name: com.mysql.cj.jdbc.Driver
