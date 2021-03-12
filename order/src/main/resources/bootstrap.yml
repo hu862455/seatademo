@@ -1,11 +1,16 @@
 spring:
   application:
     name: order-service
-eureka:
-  instance:
-    hostname: ${spring.cloud.client.ip-address}
-    prefer-ip-address: true
-    instanceId: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
-  client:
-    serviceUrl:
-      defaultZone: http://portal-dev:portal-dev@10.17.162.120:8761/eureka/
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+        group: API_GROUP
+        namespace: 6eabd707-fb31-428b-bc2e-72f9f066e16a
+      config:
+        enabled: true
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        file-extension: yml
+        group: ORDER_CONFIG_GROUP
